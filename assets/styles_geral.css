@@ -209,6 +209,10 @@ div.row-content h2 {
   margin-top: 0 !important;
 }
 
+.ei-faq-body .row {
+  margin: 2rem 0;
+}
+
 @media screen and (max-width: 991px) {
 }
 
