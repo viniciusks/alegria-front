@@ -35,6 +35,22 @@ div.row {
   margin: 1rem 0;
 }
 
+.btn-hymns {
+  border: 1px solid;
+  border-color: var(--black);
+  color: var(--black);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: var(--yellow);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-hymns:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
 .btn-default {
   border: 1px solid;
   border-color: var(--black);
