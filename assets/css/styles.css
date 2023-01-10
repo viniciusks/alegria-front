@@ -1,10 +1,5 @@
-:root {
-  --color-background: #2f3c43;
-}
-
-body {
-  width: 100%;
-}
+@import url('utils.css');
+@import url('colors.css');
 
 ul#main-nav li {
   height: 3.2rem;
