@@ -107,7 +107,7 @@ ul#main-nav li {
 
 .waveWrapperInner {
   /* background: linear-gradient(to right, #fadc5b, #ffe675); */
-  background: url("../assets/img/foto_1.jpg");
+  background: url("../../assets/img/foto_1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
