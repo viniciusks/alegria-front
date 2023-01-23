@@ -8,6 +8,7 @@ pipeline {
                 zip zipFile: 'source.zip',
                     archive: false,
                     exclude: '.editorconfig README.md Jenkinsfile'
+                sh 'ls -lah'
             }
         }
     }
