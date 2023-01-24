@@ -1,3 +1,5 @@
+def nameFolderZip = "source.zip"
+
 pipeline {
     agent any
 
@@ -5,10 +7,13 @@ pipeline {
         stage('Build') {
           steps {
             echo 'Começou o build...'
-            zip zipFile: 'source.zip',
+            zip zipFile: nameFolderZip,
                 archive: false,
                 exclude: '.editorconfig README.md Jenkinsfile'
             sh 'ls -lah'
+            sh 'mkdir dist && cp ${nameFolderZip} dist'
+            unzip zipFile: "dist/${nameFolderZip}"
+            sh 'ls -lah dist/'
           }
         }
     }
