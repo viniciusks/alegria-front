@@ -12,7 +12,8 @@ pipeline {
                 exclude: '.git .editorconfig README.md Jenkinsfile'
             sh 'ls -lah'
             sh "mkdir dist && mv ${nameFolderZip} dist"
-            unzip zipFile: "dist/${nameFolderZip}"
+            unzip zipFile: "dist/${nameFolderZip}",
+                  dir: "dist"
             sh 'ls -lah dist/'
             sh 'rm -rf dist'
           }
