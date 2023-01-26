@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+      docker {
+        image "python:3"
+      }
+    }
 
     environment {
       NAME_FOLDER_ZIP = "source.zip"
@@ -21,7 +25,6 @@ pipeline {
           steps {
             echo "..:: INÍCIO DEPLOY ::.."
 
-            sh "ls -lah /usr/bin"
             sh "python --version"
           }
         }
