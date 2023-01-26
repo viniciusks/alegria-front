@@ -1,17 +1,15 @@
-def nameFolderZip = "source.zip"
-
 pipeline {
     agent any
 
     environment {
-      BRANCH_NAME = env.BRANCH_NAME
+      NAME_FOLDER_ZIP = "source.zip"
     }
 
     stages {
         stage('Build') {
           steps {
-            echo "Começou o build da branch ${BRANCH_NAME}..."
-            zip zipFile: nameFolderZip,
+            echo "Começou o build..."
+            zip zipFile: NAME_FOLDER_ZIP,
                 archive: false,
                 exclude: '.git, .editorconfig, README.md, Jenkinsfile'
             sh 'ls -lah'
