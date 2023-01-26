@@ -21,8 +21,9 @@ pipeline {
           steps {
             echo "..:: INÍCIO DEPLOY ::.."
 
-            sh "python --version"
-            sh "ls -lah /usr/bin"
+            withPythonEnv("/usr/bin/python3") {
+              sh "python --version"
+            }
           }
         }
     }
