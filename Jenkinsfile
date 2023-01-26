@@ -6,13 +6,25 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage("Build") {
           steps {
-            echo "Começou o build..."
+            echo "..:: INÍCIO DO BUILD ::.."
+
+            echo ".: Empacontando arquivos em ${NAME_FOLDER_ZIP} :."
             zip zipFile: NAME_FOLDER_ZIP,
                 archive: false,
-                exclude: '.git, .editorconfig, README.md, Jenkinsfile'
-            sh 'ls -lah'
+                exclude: '.git, .editorconfig, README.md, Jenkinsfile',
+                overwrite: true
+          }
+        }
+        stage("Deploy") {
+          steps {
+            echo "..:: INÍCIO DEPLOY ::.."
+
+            withPythonEnv('/usr/bin/python3') {
+              sh "ls -lah"
+              sh "python -v"
+            }
           }
         }
     }
