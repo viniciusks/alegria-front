@@ -6,15 +6,15 @@ pipeline {
     stages {
         stage('Build') {
           steps {
-            cleanWs()
             echo 'Começou o build...'
             zip zipFile: nameFolderZip,
                 archive: false,
                 exclude: '.git .editorconfig README.md Jenkinsfile'
             sh 'ls -lah'
-            sh "mkdir dist && cp ${nameFolderZip} dist"
+            sh "mkdir dist && mv ${nameFolderZip} dist"
             unzip zipFile: "dist/${nameFolderZip}"
             sh 'ls -lah dist/'
+            sh 'rm -rf dist'
           }
         }
     }
