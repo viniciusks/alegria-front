@@ -21,8 +21,10 @@ pipeline {
           steps {
             echo "..:: INÍCIO DEPLOY ::.."
 
-            withPythonEnv("/usr/bin/python3") {
-              sh "python --version"
+            dir("devops") {
+              withPythonEnv("/usr/bin/python3") {
+                sh "python3 send_sftp.py"
+              }
             }
           }
         }
