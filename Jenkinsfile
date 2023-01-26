@@ -9,9 +9,9 @@ pipeline {
             echo 'Começou o build...'
             zip zipFile: nameFolderZip,
                 archive: false,
-                exclude: '.editorconfig README.md Jenkinsfile'
+                exclude: '.git .editorconfig README.md Jenkinsfile'
             sh 'ls -lah'
-            sh 'mkdir dist && cp ${nameFolderZip} dist'
+            sh "mkdir dist && cp ${nameFolderZip} dist"
             unzip zipFile: "dist/${nameFolderZip}"
             sh 'ls -lah dist/'
           }
