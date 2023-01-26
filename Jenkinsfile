@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {
           steps {
+            cleanWs()
             echo 'Começou o build...'
             zip zipFile: nameFolderZip,
                 archive: false,
