@@ -21,7 +21,11 @@ pipeline {
           steps {
             echo "..:: INÍCIO DEPLOY ::.."
 
-            dir("devops") {
+            // Realiza o clone
+            git credentialsId: 'GitHub_Username',
+                url: 'https://github.com/viniciusks/alegria-scripts.git'
+
+            dir("alegria-scripts") {
               withPythonEnv("/usr/bin/python3") {
                 sh "python3 send_sftp.py"
               }
