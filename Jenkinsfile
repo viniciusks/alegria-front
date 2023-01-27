@@ -23,12 +23,12 @@ pipeline {
           steps {
             echo "..:: INÍCIO DEPLOY ::.."
 
-            // Realiza o clone
-            git branch: 'main',
-                credentialsId: 'GitHub_Username',
-                url: 'https://github.com/viniciusks/alegria-scripts.git'
-
             dir("alegria-scripts") {
+              // Realiza o clone
+              git branch: 'main',
+                  credentialsId: 'GitHub_Username',
+                  url: 'https://github.com/viniciusks/alegria-scripts.git'
+
               withCredentials([usernamePassword(credentialsId: 'user_sftp_concafras', passwordVariable: 'passSftp', usernameVariable: 'userSftp')]) {
                 withPythonEnv("/usr/bin/python3") {
                   sh "pip3 install -r requirements.txt"
