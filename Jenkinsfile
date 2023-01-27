@@ -3,6 +3,8 @@ pipeline {
 
     environment {
       NAME_FOLDER_ZIP = "source.zip"
+      ABSOLUTE_PATH_ZIP = "${env.WORKSPACE}/${NAME_FOLDER_ZIP}"
+      HOST_SFTP = "ftp.concafras.com"
     }
 
     stages {
@@ -22,12 +24,16 @@ pipeline {
             echo "..:: INÍCIO DEPLOY ::.."
 
             // Realiza o clone
-            git credentialsId: 'GitHub_Username',
+            git branch: 'main',
+                credentialsId: 'GitHub_Username',
                 url: 'https://github.com/viniciusks/alegria-scripts.git'
 
             dir("alegria-scripts") {
-              withPythonEnv("/usr/bin/python3") {
-                sh "python3 send_sftp.py"
+              withCredentials([usernamePassword(credentialsId: 'user_sftp_concafras', passwordVariable: 'passSftp', usernameVariable: 'userSftp')]) {
+                withPythonEnv("/usr/bin/python3") {
+                  sh "pip3 instal -r requirements.txt"
+                  sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${ABSOLUTE_PATH_ZIP}"
+                }
               }
             }
           }
