@@ -31,7 +31,7 @@ pipeline {
             dir("alegria-scripts") {
               withCredentials([usernamePassword(credentialsId: 'user_sftp_concafras', passwordVariable: 'passSftp', usernameVariable: 'userSftp')]) {
                 withPythonEnv("/usr/bin/python3") {
-                  sh "pip instal -r requirements.txt"
+                  sh "pip3 instal -r requirements.txt"
                   sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${ABSOLUTE_PATH_ZIP}"
                 }
               }
