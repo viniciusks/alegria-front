@@ -40,7 +40,7 @@ pipeline {
       }
     }
     post {
-      always {
+      success {
         echo "..:: Limpando workspace ::.."
         cleanWs()
       }
