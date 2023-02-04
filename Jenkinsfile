@@ -40,7 +40,7 @@ pipeline {
                   sh "pip3 install -r requirements.txt"
                   files.each { file ->
                     echo "${file}"
-                    sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${file}"
+                    sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}/${file}"
                   }
                 }
               }
