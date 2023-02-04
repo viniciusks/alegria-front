@@ -23,7 +23,7 @@ pipeline {
         steps {
           echo "..:: INÍCIO BUILD ::.."
           script {
-            def files = findFiles(glob: 'index.html') // findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**')
+            def files = findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**')
 
             echo "${files}"
 
