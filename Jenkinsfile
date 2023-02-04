@@ -23,7 +23,7 @@ pipeline {
         steps {
           echo "..:: INÍCIO BUILD ::.."
           script {
-            def files = findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**')
+            def files = findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**', exclude: 'assets/template/**')
 
             echo "${files}"
 
@@ -40,7 +40,7 @@ pipeline {
                   sh "pip3 install -r requirements.txt"
                   files.each { file ->
                     echo "${file}"
-                    sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}/${file}"
+                    // sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}/${file}"
                   }
                 }
               }
