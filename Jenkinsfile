@@ -38,7 +38,12 @@ pipeline {
               withCredentials([usernamePassword(credentialsId: 'user_sftp_concafras', passwordVariable: 'passSftp', usernameVariable: 'userSftp')]) {
                 withPythonEnv("/usr/bin/python3") {
                   sh "pip3 install -r requirements.txt"
-                  // sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}"
+                  files.each { file ->
+                    if(file == "index.html") {
+                      echo "${file}"
+                      sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${file}"
+                    }
+                  }
                 }
               }
             }
