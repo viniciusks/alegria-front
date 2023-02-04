@@ -8,17 +8,6 @@ pipeline {
     }
 
     stages {
-      // stage("Build") {
-      //   steps {
-      //     echo "..:: INÍCIO DO BUILD ::.."
-
-      //     echo ".: Empacontando arquivos em ${NAME_FOLDER_ZIP} :."
-      //     // zip zipFile: NAME_FOLDER_ZIP,
-      //     //     archive: false,
-      //     //     exclude: '.git, .editorconfig, README.md, Jenkinsfile',
-      //     //     overwrite: true
-      //   }
-      // }
       stage("Build & Deploy") {
         steps {
           echo "..:: INÍCIO BUILD ::.."
