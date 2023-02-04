@@ -22,7 +22,9 @@ pipeline {
       stage("Build & Deploy") {
         steps {
           echo "..:: INÍCIO BUILD ::.."
-          def files = findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**')
+          script {
+            def files = findFiles(glob: 'index.html, favicon.ico, pages/**, assets/**')
+          }
           echo "${files}"
 
           echo "..:: INÍCIO DEPLOY ::.."
