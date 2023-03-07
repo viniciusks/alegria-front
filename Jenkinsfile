@@ -20,7 +20,7 @@ pipeline {
 
             dir("alegria-scripts") {
               // Realiza o clone
-              git branch: 'feature/AD-9',
+              git branch: 'main',
                   credentialsId: 'GitHub_Username',
                   url: 'https://github.com/viniciusks/alegria-scripts.git'
 
