@@ -28,8 +28,7 @@ pipeline {
                 withPythonEnv("/usr/bin/python3") {
                   sh "pip3 install -r requirements.txt"
                   files.each { file ->
-                    echo "${file}"
-                    sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}/${file}"
+                    sh "python3 send_sftp.py ${HOST_SFTP} ${userSftp} ${passSftp} ${WORKSPACE}/${file} site"
                   }
                 }
               }
