@@ -1,4 +1,4 @@
-# alegria-front
+# alegria-front a
 
 Projeto destinado a desenvolver o front-end do portal da Alegria Cristã.
 Acompanhe o desenvolvimento por aqui e pelo projeto no trello:
